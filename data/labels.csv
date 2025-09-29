@@ -1,0 +1,101 @@
+image,text
+image100.png,Desvio Padrão = s = sqrt(variancia).
+image101.png,Percentile: P, p porcento dos valores estão abaixo de p e (100-p) estão acima de p.
+image102.png,Percentile = Quantile ou 0.8q = 80 percentile
+image103.png,Percetiles = order statistics
+image104.png,Example list[T], sendo T um tipo que foi escolhidod ou limitado por bound
+image105.png,Usa se a seguinte sintaxe
+image106.png,NumberT = TypeVar('NumberT', float, decimal, Fraction), omitindo os tipos
+image107.png,del mode(data: Iterabler [NumberT]) -> NumberT
+image108.png,Copiar Código 8.19
+image109.png,8.21
+image10.png,_ Necessario de precisar fazer algo após a inif das variáveis (Validação, outros fields depedentes de fields
+inicializados)
+image110.png,A restrição aceita hashble e seus subtipos também.
+image111.png,HashableT = TypeVar('HashableT', bound Hashable)
+image112.png,Callable ([],int) subtype ([], float)
+image113.png,Callable [[int], None] No subtype [[float,None]]
+image114.png,_ Normalmente utilizado para função que dão raises de exception
+image115.png,Syntax: Callable[[ParamType1,ParamType2], ReturnType2]
+image116.png,Parameterized Generics and TypeVar
+image117.png,_ Com bound exemplo 8-18
+image118.png,_ São formas de Duck Typing, pois basta que a seguinte estrutura implemente uma função
+image119.png,Imperfect Typing and Strong Testing
+image11.png,Copiar Código 5.17 e explicar
+image120.png,Boxplots usa Percentiles
+image121.png,_ Percentiles são bons para sumarizar as pontas 95th, 99th
+image122.png,no Boxplot o último whisker não vai 1.5 IQR do percentil. Os circulos são outliers
+image123.png,Annotating Positional Only and Variadic Parameters
+image124.png,Bins largos largos pode esconder features importante do modelo. Se for muito pequeno e granular, fica
+dificíl ver o Big Picture do modelo
+image125.png,As Barras são contínuas
+image126.png,*Skewness e Kurtosis, são momentos que normalmentme não são calculadas mas sim observadas de gráficos
+image127.png,Propensão de ter valores extremos
+image128.png,Distorcido para pequenos ou grande valores.
+image129.png,Density Plots and Estimates
+image12.png,nix lock to update somente um input do flake
+image130.png,_ value_counts()
+image131.png,A escala de y é diferente
+image132.png,A área sobre a curva é 1
+image133.png,Calcule areas sobre dois pontos qualquere
+image134.png,Histogramas são plots de densidades e estimativas como linhas podem ser gerados para representar a
+densidade kernel density estimate
+image135.png,_ 1 ou 0, proporção de 1
+image136.png,Categorias, proporção de categorias
+image137.png,Se Usa Bar Charts, diferente de histograma onde cada x representa uma ciosa.
+image138.png,Histogram representa valores de uma variável única
+image139.png,_ Pode se usar a moda para ver os valores mais comuns
+image13.png,Ref Ramalho, 2022, 183-187
+image141.png,Explaining Binary and Categorical Data
+image142.png,_Probability: Proportion times it will occur
+image143.png,Entre -1 e 1
+image144.png,Correlation Matriz Diag is = 1
+image145.png,Use o corrplot/heatmaps
+image146.png,Valor esperado: Variável discretizada x Probabilidade
+image147.png,Spearman ou Kendalls são baseado em ranks e são robustos aos outliers. Além de lidar com algumas
+não-lineraridades
+image148.png,Small datasets
+image149.png,A correlação é sensível aos outliers
+image14.png,Data Classes evita que o código todo seja escrito, se você está escrevendo é um sinal de problema
+image150.png,Exploring two or More Variables
+image151.png,Scatterplots são bons para números pequenos
+image152.png,Hexagonal bining para milhões de linhas
+image153.png,Copiar fígura 1.8
+image154.png,ScatterPlot
+image155.png,Tabela de contigência
+image156.png,Separa categoria e proporção
+image157.png,tablea 1.8
+image158.png,Categórico e Númerico
+image159.png,Múltiplo Boxplots
+image15.png,Copiar código 5.18
+image160.png,Ou o lpot violino
+image161.png,Two categorical variables
+image162.png,Closures utilizam variáveis livres
+image163.png,Closures são feitos com funções aninhadas
+image164.png,Essas variaveis não são globais ou locais, mas são de funções mais externas
+image165.png,Copiar código 9.8 e 9.9
+image166.png,Ramalho, 2022, 311-314
+image167.png,O violiono mostra a distribuição também
+image168.png,=> Target = decorate(target)
+image169.png,Ramalho, 2022, 302-303
+image16.png,Inmutável, mas se precisar mudar asdict, não deve ser usado e builder diferentes deve ser implemen
+image170.png,tome nota sobre os essential facts
+image171.png,Decorator é um callable que usa outra função com argumento da função decoradad
+image172.png,@decorate
+image173.png,factorial = clock(factorial)
+image174.png,Essa função vira "clocked" (referência)
+image175.png,>>> import clockdeco_demop
+image176.png,>>> clockdeco_demo.factorial.__name__
+image177.png,Troca a função que aceita os mesmo argumentos e retorna o que o decorador deve retorna, enquanto faz
+processamento extra
+image178.png,def factorial(n) Return if n < 2 else n*factorial(n-1)
+image179.png,Copiar código 9.16
+image17.png,_ Serve para qualquer classe
+image181.png,Teorias com fortes assuptions cientista de dados
+image182.png,devem focar no procedimento de Sample e
+image183.png,Para suportar keyword arguments: functools.wraps(func)
+image184.png,Saber quando o dado vem de processos físicos
+image185.png,e podem ser moldados
+image186.png,Nesses casos podemos assumir algumas coisas
+image187.png,Teorícas que nos ajudam a ter insights
+image188,png,Fenomenos binomais (jogar moeda para cima,
