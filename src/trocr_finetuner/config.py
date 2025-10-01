@@ -17,7 +17,7 @@ FINAL_MODEL_DIR = "./meu-trocr-final"
 # Se tiver erro de "Out of Memory", diminua para 2.
 BATCH_SIZE = 4
 NUM_EPOCHS = 30 # Para um dataset pequeno (~500 amostras), mais épocas são necessárias.
-LEARNING_RATE = 5e-6
+LEARNING_RATE = 5e-5
 
 # --- Configurações LoRA ---
 # Rank da adaptação. Valores comuns são 8, 16, 32.
