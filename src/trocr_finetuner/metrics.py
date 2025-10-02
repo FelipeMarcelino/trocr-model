@@ -1,30 +1,45 @@
+# metrics.py
+import logging
+
 import evaluate
-import numpy as np
+import torch
 
+logger = logging.getLogger(__name__)
+
+# Inicializa métricas CER e WER
 cer_metric = evaluate.load("cer")
+wer_metric = evaluate.load("wer")
 
-def compute_metrics(pred, processor):
-    """Calcula a Taxa de Erro de Caractere (CER)."""
-    # Extrai preds e labels
-    pred_ids = pred.predictions
-    label_ids = pred.label_ids
+def compute_metrics(eval_pred, processor):
+    """Recebe EvalPrediction do Trainer e o processor do TrOCR.
+    Retorna dict com CER e WER.
+    """
+    predictions, labels = eval_pred.predictions, eval_pred.label_ids
 
-    # Alguns trainers retornam logits em vez de IDs
-    if isinstance(pred_ids, tuple):
-        pred_ids = pred_ids[0]
+    # Se estiverem logits, pega argmax
+    if isinstance(predictions, tuple) or predictions.ndim > 2:
+        predictions = predictions[0] if isinstance(predictions, tuple) else predictions
+        predictions = torch.argmax(torch.tensor(predictions), dim=-1).numpy()
 
-    # Se os preds vierem em logits, pega o argmax
-    if pred_ids.ndim == 3:  # (batch, seq_len, vocab_size)
-        pred_ids = np.argmax(pred_ids, axis=-1)
+    # Substitui tokens -100 pelo pad_token_id antes de decodificar
+    labels = torch.where(torch.tensor(labels) == -100,
+                         processor.tokenizer.pad_token_id,
+                         torch.tensor(labels)).numpy()
 
-    # Decodificação
-    pred_str = processor.batch_decode(pred_ids, skip_special_tokens=True)
+    # Decodifica predições e labels
+    pred_texts = processor.batch_decode(predictions, skip_special_tokens=True)
+    label_texts = processor.batch_decode(labels, skip_special_tokens=True)
 
-    # Ajusta labels (substitui -100 pelo pad_token_id antes de decodificar)
-    label_ids[label_ids == -100] = processor.tokenizer.pad_token_id
-    label_str = processor.batch_decode(label_ids, skip_special_tokens=True)
+    # Remove possíveis None ou strings vazias
+    pred_texts = [t if t is not None else "" for t in pred_texts]
+    label_texts = [t if t is not None else "" for t in label_texts]
 
-    # CER
-    cer = cer_metric.compute(predictions=pred_str, references=label_str)
+    # Calcula CER e WER
+    cer = cer_metric.compute(predictions=pred_texts, references=label_texts)
+    wer = wer_metric.compute(predictions=pred_texts, references=label_texts)
 
-    return {"cer": cer}
+    logger.info(f"CER: {cer:.4f}, WER: {wer:.4f}")
+    return {
+        "cer": cer,
+        "wer": wer,
+    }

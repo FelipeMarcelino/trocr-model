@@ -16,8 +16,8 @@ FINAL_MODEL_DIR = "./meu-trocr-final"
 # Com 8GB de VRAM, um batch size pequeno é essencial.
 # Se tiver erro de "Out of Memory", diminua para 2.
 BATCH_SIZE = 4
-NUM_EPOCHS = 30 # Para um dataset pequeno (~500 amostras), mais épocas são necessárias.
-LEARNING_RATE = 5e-5
+NUM_EPOCHS = 50 # Para um dataset pequeno (~500 amostras), mais épocas são necessárias.
+LEARNING_RATE = 5e-4
 
 # --- Configurações LoRA ---
 # Rank da adaptação. Valores comuns são 8, 16, 32.

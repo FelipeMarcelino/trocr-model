@@ -94,3 +94,107 @@ image185.png;e podem ser moldados
 image186.png;Nesses casos podemos assumir algumas coisas
 image187.png;Teorícas que nos ajudam a ter insights
 image188.png;Fenomenos binomais (jogar moeda para cima,
+image189.png;fraud ou não, comprar ou não, podem ser
+iamge18.png;Copiar Código 5.22
+image190.png;modelados assumindos uma distribuição binomial
+image191.png;dos dados em mão
+image192.png;Random Sampling é a mehor forma de
+image193.png;Uma sample precisa ser representativa da
+image194.png;sua população mas nem sempre será possível
+image195.png;menor quantiade de dados é melhor para
+image196.png;dados que sejam bons
+image197.png;Sample: Um sub conjunto dos dados
+image198.png;Dados massivos são importantes quando eles
+image199.png;Sample mean: x, Population Mean: u
+image19.png;Data class as Intermediate Representation
+image1.png; result contém o resultado da derivação construída
+image200.png;Gerar samples estratificadas é difícil pois é
+image201.png;necessário saber quais grupos dividir
+image202.png;ticar qeu acontece durante o processo de
+image203.png;missing data e outliers são importantes
+image204.png;A maioria dos decorados muda a função
+image205.png;Decoradores são definidos em um módulo e
+image206.png;Ramalho, 2022, p308
+image207.png;medicão ou amostragem. Possui uma direção
+image208.png;nos dados ou responde sua pergunta
+image209.png;Normalmente se tem "high confidence" no selection
+image20.png;Ramalho, 2022, 190 - 196
+image210.png;Data Snooping: procurar incansvelmente
+image211.png;no dado até algo interessante apareça
+image212.png;vast search effect: diferente modelos com diferentes
+image213.png;questões em datasets largos, uma hora você vai
+image214.png;Voçe forçadamente, faz uma ação que provoca vies
+image215.png;Previne: Holdout dataset (mais de 1)
+image216.png;Regression to the Mean
+image217.png;Focar em valores extremo é uma forma de
+image218.png;achar algo interessante.
+image219.png;Serve para tipos imutáveis, pois
+image21.png;Copiar segundo código, primeiro atributo tem que ser Asia
+image220.png;Essa variável local não existe e não
+image221.png;pode ser modificada
+image222.png;keyword nonlocal
+image223.png;copiar código 9.12 e o seu erro
+image224.png;copiar código 9.13
+image225.png;copiar Variable Lookup Logic em outra
+image226.png;Ramalho, 2022, 315-317
+image227.png;Quando esse tipo muda, acba-se criando uma
+image228.png;precedência caso exista umna global e uma
+image229.png;dentro da função(toma procedência)
+image22.png;"==" compara os valores, "is" compara a referência
+image230.png;Se caso a vriável dentro da função
+image231.png;é chamada com intenção de ler a variável
+image232.png;global, é necessário: global variável
+image233.png;A variaǘel de mesmo nome pode ser alterada
+image234.png;As variáveis possuem escopo, e existe uma
+image235.png;Ramalho, 2022, 308-3011
+image236.png;Roda em tempo de import
+image237.png;Copia código 9.2 eas respostas depois do
+image238.png;Copiar também o impor abaixo
+image239.png;Ramalho, 2022, p306-307
+image23.png;_ Variáveis são labels e não caixas
+image240.png;depois copiar código página 110
+image241.png;distribution cai com probabilidade x%
+image242.png;level de confiança, quanto maior, mais largo
+image243.png;Quanto menor a sample também mais largo
+image244.png;90% engloba 90% de boostrap da sampling
+image245.png;distribution de um estatistica
+image246.png;cache, lru_cache, single dispatch
+image247.png;cache salva os resultados das chamadas
+image248.png;É um intervalo onde o sampling
+image249.png;Copiar código 9.18 -> Mostre como fica stacked
+image24.png;Compara a identidade
+image250.png;Cache é para comando rápidos pois pode
+image251.png;Todos os argumentos da função precisam
+image252.png;ser hasheáveis, pois são salvos em um
+image253.png;São ótimos para APIs remotas
+image254.png;lru_cache pode se usar o maxsize para
+image255.png;setar o tamanho da cache
+image256.png;anteriores fazendo com que o processo seja
+image257.png;taped==true f(1) e f(1.0) são guardados
+image258.png;Single Dispatch deixa que uma função
+image259.png;seja implementa diferentes comportamentos e
+image25.png;- É viáviel utilizar o "is" se comparar com Singleton, por exemplo "None"
+image260.png;a chamada é de acordo com o primeiro
+image261.png;Imita overloading de java
+image262.png;Use collections.abc e protocols para
+image263.png;Least Recently Used: As antigas não lidas
+image264.png;*Evite tipos concretos para a compatibilidade
+image265.png;- Suporte para fritura classes e classes virtuais
+image266.png;Ramalho, 202, 320-329
+image267.png;Copiar código 9.20 e 9.19
+image268.png;necessário fazer uma Fabrica de decoradores.
+image269.png;ou seja uma função que aceita argumento e
+image26.png;- tuplas são imutáveis mas seu conteúdo pode não ser. Uma lista por exemplo, dado isso, algumas tupls não são hasheáveis
+image270.png;retornar uma decorador
+image271.png;Copiar código 9.22
+image272.png; Para se usar um decorador parametrizado
+image273.png;normais de função
+image274.png;The Parameterized Clock Decoration
+image275.png;Copiar código 9.24 // falar sobre **locals
+image276.png;Ramalho, 2022, 329-335
+image277.png;Sampling Distribution: É a distribuição de
+image278.png;uma amostra estística sobre várias amstras
+image279.png;Copiar 9.23 para closures ou chamada
+image27.png;Qual usar "==" ou "is"
+image280.png;de 5 amostras é uma sample da sampling
+image281.png;Sample Statistic

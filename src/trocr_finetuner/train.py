@@ -2,7 +2,8 @@
 import logging
 
 from peft import PeftModel
-from transformers import Seq2SeqTrainer, Seq2SeqTrainingArguments, default_data_collator
+from transformers import (Seq2SeqTrainer, Seq2SeqTrainingArguments,
+                          default_data_collator)
 
 from . import config, dataset_loader, metrics, model_loader
 
@@ -34,8 +35,10 @@ def main():
         eval_strategy="epoch",
         save_strategy="epoch",
 
+
+        dataloader_pin_memory=False,
         warmup_ratio=0.1,
-        adam_epsilon=1e-6,
+        adam_epsilon=1e-8,
         weight_decay=0.01,
         generation_max_length=64,
         generation_num_beams=1,
@@ -45,7 +48,7 @@ def main():
         per_device_train_batch_size=config.BATCH_SIZE,
         per_device_eval_batch_size=config.BATCH_SIZE,
         fp16=False,
-        max_grad_norm=1.0,
+        max_grad_norm=1.0
         num_train_epochs=config.NUM_EPOCHS,
         learning_rate=config.LEARNING_RATE,
 
