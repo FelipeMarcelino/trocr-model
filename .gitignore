@@ -6,3 +6,5 @@ __pycache__/
 .env
 *.log
 meu-trocr-final
+*my_py
+*.mypy_cache/
