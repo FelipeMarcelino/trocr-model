@@ -1,4 +1,6 @@
 import os
+import re
+import unicodedata
 
 import pandas as pd
 from datasets import load_dataset
@@ -7,6 +9,12 @@ from tokenizers.models import BPE
 from tokenizers.pre_tokenizers import Whitespace
 from tokenizers.trainers import BpeTrainer
 from transformers import AutoTokenizer, RobertaTokenizerFast
+
+UTF8_CORRUPT_MAP = {
+    "Ã¡": "á", "Ã©": "é", "Ã­": "í", "Ã³": "ó", "Ãº": "ú",
+    "Ã£": "ã", "Ãµ": "õ", "Ã¢": "â", "Ãª": "ê", "Ã´": "ô", "Ã§": "ç",
+    "Ã": "Á", "Ã‰": "É", "Ã": "Í", "Ã“": "Ó", "Ãš": "Ú", "Ãƒ": "Ã", "Ã•": "Õ", "Ã‚": "Â", "ÃŠ": "Ê", "Ã”": "Ô", "Ã‡": "Ç",
+}
 
 # ==============================================================================
 # 0. CONFIGURAÇÃO DE CAMINHOS
@@ -37,11 +45,24 @@ labels_dataset = df["text"].astype(str).tolist()
 print(f"Carregadas {len(labels_dataset)} labels do seu dataset.")
 
 # --- Corpus Públicos ---
-wiki = load_dataset("wikimedia/wikipedia", "20231101.pt", split="train[:1%]")
+wiki = load_dataset("wikimedia/wikipedia", "20231101.br", split="train[:1%]")
 wiki_texts = [str(x["text"]) for x in wiki]
 print(f"Carregados {len(wiki_texts)} documentos da Wikipedia.")
 
-all_texts = labels_dataset + wiki_texts
+def clean_text(s: str) -> str:
+    # força string
+    if not isinstance(s, str):
+        return ""
+    # aplica substituições
+    for bad, good in UTF8_CORRUPT_MAP.items():
+        s = s.replace(bad, good)
+    # remove caracteres de controle invisíveis
+    s = re.sub(r"[\u200b-\u200f\u202a-\u202e]", "", s)
+    # normaliza Unicode
+    s = unicodedata.normalize("NFC", s)
+    return s
+
+all_texts = [clean_text(x) for x in labels_dataset + wiki_texts]
 print(f"\nCorpus total combinado com {len(all_texts)} documentos em memória.\n")
 
 # ==============================================================================

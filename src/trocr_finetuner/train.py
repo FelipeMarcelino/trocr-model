@@ -2,8 +2,7 @@
 import logging
 
 from peft import PeftModel
-from transformers import (Seq2SeqTrainer, Seq2SeqTrainingArguments,
-                          default_data_collator)
+from transformers import Seq2SeqTrainer, Seq2SeqTrainingArguments, default_data_collator
 
 from . import config, dataset_loader, metrics, model_loader
 
@@ -42,7 +41,7 @@ def main():
         weight_decay=0.01,
         generation_max_length=64,
         generation_num_beams=1,
-        generation_confifrom tokenizers import Tokenizerg=lora_model.generation_config,
+        generation_config=lora_model.generation_config,
 
         # Hiperparâmetros
         per_device_train_batch_size=config.BATCH_SIZE,
