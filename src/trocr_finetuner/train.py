@@ -43,7 +43,7 @@ def main():
         generation_num_beams=1,
         generation_config=lora_model.generation_config,
 
-        # Hiperparâmetros
+                                             # Hiperparâmetros
         per_device_train_batch_size=config.BATCH_SIZE,
         per_device_eval_batch_size=config.BATCH_SIZE,
         fp16=False,
