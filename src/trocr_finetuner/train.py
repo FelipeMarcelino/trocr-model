@@ -42,13 +42,13 @@ def main():
         weight_decay=0.01,
         generation_max_length=64,
         generation_num_beams=1,
-        generation_config=lora_model.generation_config,
+        generation_confifrom tokenizers import Tokenizerg=lora_model.generation_config,
 
         # Hiperparâmetros
         per_device_train_batch_size=config.BATCH_SIZE,
         per_device_eval_batch_size=config.BATCH_SIZE,
         fp16=False,
-        max_grad_norm=1.0
+        max_grad_norm=1.0,
         num_train_epochs=config.NUM_EPOCHS,
         learning_rate=config.LEARNING_RATE,
 

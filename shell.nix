@@ -24,6 +24,7 @@ pkgs-unfree.mkShell {
     pythonPackages.tensorboard
     pythonPackages.scikit-learn
     pythonPackages.pillow
+    pythonPackages.transformers
     pkgs-unfree.cudaPackages.cudatoolkit
     pkgs-unfree.cudaPackages.cudnn
     pkgs-unfree.linuxPackages.nvidia_x11

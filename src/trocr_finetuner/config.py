@@ -6,7 +6,9 @@ CSV_FILENAME = "labels.csv"
 IMAGE_DIR_NAME = "images"
 
 # --- Modelos ---
-BASE_MODEL_ID = "microsoft/trocr-base-handwritten"
+#BASE_MODEL_ID = "microsoft/trocr-base-handwritten"
+BASE_MODEL_ID = "microsoft/trocr-base-stage1"
+
 # Onde os checkpoints do LoRA serão salvos durante o treinamento
 LORA_CHECKPOINT_DIR = "./trocr-lora-finetuned"
 # Onde o modelo final, pronto para produção, será salvo
