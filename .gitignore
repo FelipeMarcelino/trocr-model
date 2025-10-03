@@ -8,3 +8,5 @@ __pycache__/
 meu-trocr-final
 *my_py
 *.mypy_cache/
+trainer_output/
+.venv

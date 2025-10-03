@@ -9,7 +9,7 @@ let
     inherit (pkgs) system;
     config.allowUnfree = true;
   };
-  pythonPackages = pkgs-unfree.python313Packages;
+  pythonPackages = pkgs-unfree.python312Packages;
 in
 pkgs-unfree.mkShell {
   buildInputs = [

@@ -38,7 +38,7 @@ ninja==1.13.1
 numpy==2.3.2
 packaging==25.0
 pandas==2.3.1
-peft==0.17.1
+peft==0.17.0
 pillow==11.3.0
 propcache==0.3.2
 protobuf==6.32.0
@@ -60,7 +60,6 @@ scipy==1.16.1
 setuptools==80.9.0.post0
 six==1.17.0
 sortedcontainers==2.4.0
-standard-imghdr==3.13.0
 sympy==1.14.0
 tensorboard==2.20.0
 tensorboard-data-server==0.7.2
