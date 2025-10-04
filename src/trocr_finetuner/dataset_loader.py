@@ -1,13 +1,15 @@
 # src/trocr_finetuner/dataset_loader.py
 import logging
 import os
+import random
+from functools import partial
 
 import torch
 from datasets import Image as dsImage
 from datasets import load_dataset
 from PIL import Image
 
-from . import config
+from . import augmentation, config
 
 logger = logging.getLogger(__name__)
 
@@ -30,10 +32,20 @@ def load_and_prepare_dataset(processor):
     dataset = dataset.train_test_split(test_size=0.1, seed=42)
 
     # --- FUNÇÃO DE PRÉ-PROCESSAMENTO CORRIGIDA E ROBUSTA ---
-    def preprocess_function(examples):
+    def preprocess_function(examples, is_training=False):
         # 1. Garante que TODAS as imagens tenham o mesmo tamanho
         target_size = (384, 384)
         resized_images = [img.resize(target_size, Image.Resampling.LANCZOS) for img in examples["image"]]
+
+        if is_training and random.random() > 0.5:
+            augmented_images = []
+            for img in examples["image"]:
+                aug_img = augmentation.augment_image(img)
+                aug_img = aug_img.resize(target_size, Image.Resampling.LANCZOS)
+                augmented_images.append(aug_img)
+            resized_images = augmented_images
+        else:
+            resized_images = [img.resize(target_size, Image.Resampling.LANCZOS) for img in examples["image"]]
 
         # 2. Processa as imagens já redimensionadas
         pixel_values = processor(images=resized_images, return_tensors="pt").pixel_values
@@ -52,13 +64,13 @@ def load_and_prepare_dataset(processor):
     logger.info("Aplicando pré-processamento em todo o dataset com .map()...")
 
     processed_train_dataset = dataset["train"].map(
-        preprocess_function,
+        partial(preprocess_function,is_training=True),
         batched=True,
         remove_columns=dataset["train"].column_names,
     ).with_format("torch")
 
     processed_eval_dataset = dataset["test"].map(
-        preprocess_function,
+        partial(preprocess_function, is_training=False),
         batched=True,
         remove_columns=dataset["test"].column_names,
     ).with_format("torch")

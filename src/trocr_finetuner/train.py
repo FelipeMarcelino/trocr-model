@@ -43,6 +43,7 @@ def main():
         generation_num_beams=1,
         generation_config=lora_model.generation_config,
 
+
                                              # Hiperparâmetros
         per_device_train_batch_size=config.BATCH_SIZE,
         per_device_eval_batch_size=config.BATCH_SIZE,
@@ -55,7 +56,7 @@ def main():
         # Logging e Melhor Modelo
         logging_strategy="epoch", # Loga no final de cada época
         load_best_model_at_end=True,
-        metric_for_best_model="cer",
+        metric_for_best_model="eval_cer",
         greater_is_better=False,
         report_to="tensorboard",
         save_total_limit=2,

@@ -17,7 +17,6 @@ pkgs-unfree.mkShell {
     pythonPackages.venvShellHook
     pkgs-unfree.autoPatchelfHook
     pythonPackages.datasets
-    pythonPackages.peft
     pythonPackages.evaluate
     pythonPackages.jiwer
     pythonPackages.accelerate

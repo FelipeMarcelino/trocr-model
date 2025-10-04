@@ -61,6 +61,5 @@ def get_lora_model_and_processor():
 
     logger.info("Aplicando adaptação LoRA ao modelo...")
     lora_model = get_peft_model(model, lora_config)
-    lora_model.print_trainable_parameters()
 
     return lora_model, processor, model
